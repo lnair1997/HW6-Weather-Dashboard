@@ -6,12 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Dashboard</title>
 
-    <link rel="stylesheet" href="style.css">
-
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
+    <!-- CSS only -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -21,24 +20,61 @@
         </div>
 
         <div class="row">
-            <div class="col-4">
                 <div class="card">
                     <div class="row" id="row1">
-                        <h5><label for="search">Search for a City:</label></h5>
-                        <div class="form-group col-10" id="searchBox">
+                        <h5>Search for a City:</h5>
+                        <div class="form-group col-9" id="searchBox">
                             <input type="text" class="form-control" id="userInput">
                         </div>
                         <button id="searchBtn" class="btn btn-primary col-2"><i class="fas fa-search"></i></button>
                     </div>
                     <div class="card-body">
-                        <ul class="list-group list-group-flush">
-                        </ul>
+                        <ul class="list-group list-group-flush"></ul>
                     </div>
+                </div>
+
+            <div class="col-8" id="weatherBox">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card" id="weatherCard">
+                            <h4 class="card-title" id="cityName"></h4>
+                            <p id="temperature"></p>
+                            <p id="humidity"></p>
+                            <p id="windSpeed"></p>
+                            <p id="UV"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <br>
+
+                <div class="row">
+                    <div class="col-12">
+                        <h5 id="forecast"></h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12" id="forecastBox"></div>
                 </div>
             </div>
         </div>
     </div>
 
+
+
+
+
+
+
+
+
+
+    <!-- 
+    <nav class="navbar is-fixed-top is-dark" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand flex-vertical-center">
+            <h1 class="navbar-item title">Weather DashBoard</h1>
+        </div>
+    </nav> -->
     <!-- JS, Popper.js, and jQuery -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
@@ -49,7 +85,8 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
-        
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="script.js"></script>
 
 </body>
