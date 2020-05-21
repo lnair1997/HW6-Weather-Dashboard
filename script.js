@@ -3,7 +3,7 @@ $(document).ready(function () {
     // 1) Inital array to store cities in
     var citiesArray = [];
     var apiKey = "258635a5e9f4d564a966e4ce880b065d";
-    $("#weatherBox").hide();
+    // $("#weatherBox").hide();
 
     // 3) Create dynamic button for text entered
     function addCityBtn(city) {

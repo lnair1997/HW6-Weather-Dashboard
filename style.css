@@ -1,5 +1,5 @@
 /* style="background-color:#20315A ; color: white; padding: 20px;"> */
-.jumbotron {
+/* .jumbotron {
     background-color: rgb(17, 17, 68);
     color: white;
 
@@ -7,4 +7,12 @@
 
 h5 {
     padding-left: 15px;
+} */
+/* *{
+    box-sizing: border-box;
+} */
+
+
+.container.is-fluid {
+    margin-top: 100px;
 }
