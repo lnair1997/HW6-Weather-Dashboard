@@ -1,34 +1,37 @@
 // Load HTML page
 $(document).ready(function () {
-    // 1) Inital array to store cities in
+    // Inital array to store cities in
     var citiesArray = [];
     var apiKey = "258635a5e9f4d564a966e4ce880b065d";
     $("#weatherBox").hide();
 
-    // 3) Create dynamic button for text entered
+    //========================================================================================================
+
+    // Create dynamic button for text entered
     function addCityBtn(city) {
-        var ulEle = $("ul");
         var liEle = $("<li>")
-        var btnEle = $("<button>");
+        var btnEle = $("<button>").text(city);
         btnEle.attr("class", "cityListBtn button is-rounded is-success");
-        btnEle.text(city);
         liEle.append(btnEle)
-        ulEle.append(liEle);
+        $("ul").append(liEle);
     }
 
-    // 4) When city is clicked, it should activate the function to load display
+    //========================================================================================================
+
+    // When city is clicked, it should activate the function to load display
     $(document).on("click", ".cityListBtn", function () {
         event.preventDefault();
-        var cityClick = $(this).text();
-        console.log(cityClick);
-        searchWeather(cityClick);
+        var cityClicked = $(this).text();
+
+        searchWeather(cityClicked);
     })
+
+    //========================================================================================================
 
     // SearchWeather
     function searchWeather(city) {
         var weatherURL = "https://api.openweathermap.org/data/2.5/weather?q=" + city + "&appid=" + apiKey;
         var uvURL = "";
-
 
         $.ajax({
             url: weatherURL,
@@ -38,25 +41,24 @@ $(document).ready(function () {
 
             // Name and icon
             var icon = response.weather[0].icon;
-            var iconURL = "https://openweathermap.org/img/wn/" + icon + "@2x.png";
+            var iconURL = "http://openweathermap.org/img/w/" + icon + ".png";
             $("#cityName").text(response.name);
             var imgDiv = $("<img>");
             imgDiv.attr("src", iconURL);
             var currentDate = moment().format("MM/DD/YYYY");
             var spanDate = $("<span>").text(" (" + currentDate + ")");
-            $("#cityName").append(spanDate);
-            $("#cityName").append(imgDiv);
+            $("#cityName").append(spanDate, imgDiv);
 
             // Temperature
-            var tempF = (response.main.temp - 273.15) * 1.80 + 32;
-            tempF = tempF.toFixed(2);
+            var tempF = (((response.main.temp - 273.15) * 1.80) + 32).toFixed(2);
             $("#temperature").text("Temperature: " + tempF + " °F");
 
             // Humidity and wind speed
             $("#humidity").text("Humidity: " + response.main.humidity + " %");
             $("#windSpeed").text("Wind Speed: " + response.wind.speed + " MPH");
 
-
+            //======================================================================================
+            
             // UV
             var lon = response.coord.lon;
             var lat = response.coord.lat;
@@ -66,35 +68,27 @@ $(document).ready(function () {
             $.ajax({
                 url: uvURL,
                 method: "GET"
-            }).then(function (uvData) {
-                console.log(uvData);
+            }).then(function (uvRating) {
 
-                var uvNumber = uvData.value;
-                $("#UV").text("UV Index: ");
+                var uvNumber = uvRating.value;
                 var spanEle = $("<span>").text(uvNumber);
-                $("#UV").append(spanEle);
+                $("#UV").text("UV Index: ").append(spanEle);
 
                 // UV index color
-                if (uvNumber < 3) {
-                    spanEle.removeClass("low moderate high veryHigh extreme").addClass("low");
-
-                } else if (uvNumber >= 3 && uvNumber < 6) {
-                    spanEle.removeClass("low moderate high veryHigh extreme").addClass("moderate");
-
-                } else if (uvNumber >= 6 && uvNumber < 8) {
-                    spanEle.removeClass("low moderate high veryHigh extreme").addClass("high");
-
-                } else if (uvNumber >= 8 && uvNumber < 11) {
-                    spanEle.removeClass("low moderate high veryHigh extreme").addClass("veryHigh");
-
+                if (uvNumber <= 2) {
+                    spanEle.removeClass("low moderate high veryHigh").addClass("low");
+                } else if (uvNumber > 2 && uvNumber < 5) {
+                    spanEle.removeClass("low moderate high veryHigh").addClass("moderate");
+                } else if (uvNumber > 5 && uvNumber <= 7) {
+                    spanEle.removeClass("low moderate high veryHigh").addClass("high");
                 } else {
-                    spanEle.removeClass("low moderate high veryHigh extreme").addClass("extreme");
-
+                    spanEle.removeClass("low moderate high veryHigh").addClass("veryHigh");
                 }
 
                 $("#weatherBox").show();
             })
 
+            //===============================================================================================
 
             // 5 days forecast
             var forecastURL = "https://api.openweathermap.org/data/2.5/forecast?q=" + city + "&appid=" + apiKey;
@@ -139,7 +133,9 @@ $(document).ready(function () {
         })
     }
 
-    // 2) Search button is clicked, the input is stored so that the button is created, and pushed into the array
+    //========================================================================================================
+
+    // Search button is clicked, the input is stored so that the button is created, and pushed into the array
     $("#searchBtn").on("click", function () {
         event.preventDefault();
 
@@ -154,11 +150,25 @@ $(document).ready(function () {
             citiesArray.push(city);
             localStorage.setItem("cityList", JSON.stringify(citiesArray));
         };
-        
+
         searchWeather(city);
     })
 
+    //========================================================================================================
 
+    // Get history form localstorage
+    function getHistory() {
+
+        var history = localStorage.getItem("cityList");
+        if (history) {
+            citiesArray = JSON.parse(history);
+            for (var i = 0; i < citiesArray.length; i++) {
+                addCityBtn(citiesArray[i]);
+            }
+            searchWeather(citiesArray[citiesArray.length - 1]);
+        }
+    }
+    getHistory();
 
 
 });
