@@ -44,8 +44,8 @@ $(document).ready(function () {
             imgDiv.attr("src", iconURL);
             var currentDate = moment().format("MM/DD/YYYY");
             var spanDate = $("<span>").text(" (" + currentDate + ")");
-            $("h4").append(spanDate);
-            $("h4").append(imgDiv);
+            $("#cityName").append(spanDate);
+            $("#cityName").append(imgDiv);
 
             // Temperature
             var tempF = (response.main.temp - 273.15) * 1.80 + 32;
@@ -91,6 +91,7 @@ $(document).ready(function () {
                     spanEle.removeClass("low moderate high veryHigh extreme").addClass("extreme");
 
                 }
+                
                 $("#weatherBox").show();
             })
 
