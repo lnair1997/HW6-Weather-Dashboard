@@ -1,18 +1,76 @@
-/* style="background-color:#20315A ; color: white; padding: 20px;"> */
-/* .jumbotron {
-    background-color: rgb(17, 17, 68);
-    color: white;
-
+* {
+    box-sizing: border-box;
 }
 
-h5 {
-    padding-left: 15px;
-} */
-/* *{
-    box-sizing: border-box;
-} */
+.navbar {
+    background-color: #20315A;
+}
 
+.navbar-item {
+    color:white;
+}
 
 .container.is-fluid {
-    margin-top: 100px;
+    margin-top: 120px;
+}
+
+.box:not(:last-child) {
+    margin-bottom: 0px;
+}
+
+.box {
+    height: 240px;
+    width:190px;
+    background-color: #20315A;
+    color:white;
+}
+
+.title:not(:last-child) {
+    margin-bottom: 0px;
+    padding: 15px;
+}
+
+#UV {
+    padding: 15px;
+}
+
+.field:not(:last-child) {
+    padding-left: 10px;
+}
+
+element.style {
+    margin-left: 10px;
+}
+
+.cityListBtn {
+    margin-bottom: 5px;
+}
+
+.low{
+    background-color: green;
+}
+
+.moderate{
+    background-color: yellow;
+}
+
+.high{
+    background-color:orange;
+}
+
+.veryHigh{
+    background-color: red;
+}
+
+.extreme{
+    background-color: purple;
+}
+
+.low, 
+.moderate, 
+.high, 
+.veryHigh, 
+.extreme{
+    padding: 5px;
+
 }

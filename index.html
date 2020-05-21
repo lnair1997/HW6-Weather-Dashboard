@@ -14,71 +14,18 @@
 </head>
 
 <body>
-    <!-- <div class="container">
-        <div class="jumbotron">
-            <h1 class="text-center">Weather Dashboard</h1>
-        </div>
 
-        <div class="row">
-                <div class="card">
-                    <div class="row" id="row1">
-                        <h5>Search for a City:</h5>
-                        <div class="form-group col-9" id="searchBox">
-                            <input type="text" class="form-control" id="userInput">
-                        </div>
-                        <button id="searchBtn" class="btn btn-primary col-2"><i class="fas fa-search"></i></button>
-                    </div>
-                    <div class="card-body">
-                        <ul class="list-group list-group-flush"></ul>
-                    </div>
-                </div>
-
-            <div class="col-8" id="weatherBox">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="card" id="weatherCard">
-                            <h4 class="card-title" id="cityName"></h4>
-                            <p id="temperature"></p>
-                            <p id="humidity"></p>
-                            <p id="windSpeed"></p>
-                            <p id="UV"></p>
-                        </div>
-                    </div>
-                </div>
-
-                <br>
-
-                <div class="row">
-                    <div class="col-12">
-                        <h5 id="forecast"></h5>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-12" id="forecastBox"></div>
-                </div>
-            </div>
-        </div>
-    </div>
- -->
-
-
-
-
-
-
-
-    <nav class="navbar is-fixed-top is-dark is-centered">
+    <nav class="navbar is-fixed-top">
         <div class="navbar-brand">
-            <h1 class="navbar-item title">Weather DashBoard</h1>
+            <h1 class="navbar-item title is-1">Weather DashBoard</h1>
         </div>
     </nav>
-
 
     <main class="container is-fluid">
 
         <div class="columns">
             <div class="column is-3">
-                <div class="card">
+                <div class="card" id="searchCard">
                     <h5 class="title is-5">Search for a City:</h5>
                     <div class="field has-addons">
                         <p class="control">
@@ -98,10 +45,9 @@
 
             </div>
 
-            <div class="column">
-
+            <div class="column" id="weatherBox">
                 <div class="card">
-                    <div class="card-content" id="weatherBox">
+                    <div class="card-content">
                         <p class="title is-3" id="cityName"></p>
                         <p class="title is-5" id="temperature"></p>
                         <p class="title is-5" id="humidity"></p>
@@ -114,7 +60,7 @@
 
                 <div class="columns">
                     <div class="column">
-                        <h4 class="title is-4 is-centered" id="forecast"></h4>
+                        <h4 class="title is-4" id="forecast"></h4>
                     </div>
                 </div>
 
