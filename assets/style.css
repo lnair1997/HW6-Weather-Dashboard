@@ -29,6 +29,10 @@
     color:white;
 }
 
+.forecastCard {
+    border-right: solid white;
+}
+
 .title:not(:last-child) {
     margin-bottom: 0px;
     padding: 15px;
